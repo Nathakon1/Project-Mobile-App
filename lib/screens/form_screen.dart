@@ -17,8 +17,9 @@ class FormScreen extends StatefulWidget {
 class _FormScreenState extends State<FormScreen> {
   final formKey = GlobalKey<FormState>();
 
-  final titleController = TextEditingController();
-
+  final titleController1 = TextEditingController();
+  final titleController2 = TextEditingController();
+  final titleController3 = TextEditingController();
   final amountController = TextEditingController();
 
   @override
@@ -34,10 +35,10 @@ class _FormScreenState extends State<FormScreen> {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'ชื่อรายการ',
+                    labelText: 'ชื่อเกมส์',
                   ),
                   autofocus: false,
-                  controller: titleController,
+                  controller: titleController1,
                   validator: (String? str) {
                     if (str!.isEmpty) {
                       return 'กรุณากรอกข้อมูล';
@@ -46,14 +47,41 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'จำนวนเงิน',
+                    labelText: 'แนวเกมส์',
+                  ),
+                  autofocus: false,
+                  controller: titleController2,
+                  validator: (String? str) {
+                    if (str!.isEmpty) {
+                      return 'กรุณากรอกข้อมูล';
+                    }
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'เนื้อเรื่องย่อของเกมส์',
+                  ),
+                  autofocus: false,
+                  controller: titleController3,
+                  validator: (String? str) {
+                    if (str!.isEmpty) {
+                      return 'กรุณากรอกข้อมูล';
+                    }
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Rating',
                   ),
                   keyboardType: TextInputType.number,
                   controller: amountController,
                   validator: (String? input) {
                     try {
                       double amount = double.parse(input!);
-                      if (amount < 0) {
+                      if (amount > 5 ) {
+                        return 'กรุณากรอกข้อมูลไม่เกินกว่า 5';
+                      }
+                      else if (amount == 0 ) {
                         return 'กรุณากรอกข้อมูลมากกว่า 0';
                       }
                     } catch (e) {
@@ -67,9 +95,15 @@ class _FormScreenState extends State<FormScreen> {
                           if (formKey.currentState!.validate())
                             {
                               // create transaction data object
-                              var statement = Transactions(
+                              var statement1 = Transactions(
                                   keyID: null,
-                                  title: titleController.text,
+                                  title: titleController1.text,
+                                  amount: double.parse(amountController.text),
+                                  date: DateTime.now()
+                                  );
+                              var statement2 = Transactions(
+                                  keyID: null,
+                                  title: titleController1.text,
                                   amount: double.parse(amountController.text),
                                   date: DateTime.now()
                                   );
@@ -77,7 +111,8 @@ class _FormScreenState extends State<FormScreen> {
                               // add transaction data object to provider
                               var provider = Provider.of<TransactionProvider>(context, listen: false);
                               
-                              provider.addTransaction(statement);
+                              provider.addTransaction(statement1);
+                              provider.addTransaction(statement2);
 
                               Navigator.push(context, MaterialPageRoute(
                                 fullscreenDialog: true,

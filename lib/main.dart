@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(51, 255, 0, 0)),
           useMaterial3: true,
         ),
         home: const MyHomePage(),
@@ -60,8 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           bottomNavigationBar: TabBar(
             tabs: [
-              Tab(text: "รายการธุรกรรม", icon: Icon(Icons.list),),
-              Tab(text: "เพิ่มข้อมูล", icon: Icon(Icons.add),),
+              Tab(
+                text: "รายการ",
+                icon: Icon(Icons.list),
+              ),
+              Tab(
+                text: "เพิ่มข้อมูล",
+                icon: Icon(Icons.add),
+              ),
             ],
           ),
         ));

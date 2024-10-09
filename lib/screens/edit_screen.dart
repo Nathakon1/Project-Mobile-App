@@ -18,13 +18,17 @@ class EditScreen extends StatefulWidget {
 class _EditScreenState extends State<EditScreen> {
   final formKey = GlobalKey<FormState>();
 
-  final titleController = TextEditingController();
+  final titleController1 = TextEditingController();
+  final titleController2 = TextEditingController();
+  final titleController3 = TextEditingController();
 
   final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    titleController.text = widget.statement.title;
+    titleController1.text = widget.statement.title;
+    titleController2.text = widget.statement.title;
+    titleController3.text = widget.statement.title;
     amountController.text = widget.statement.amount.toString();
     return Scaffold(
         appBar: AppBar(
@@ -36,10 +40,10 @@ class _EditScreenState extends State<EditScreen> {
               children: [
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'ชื่อรายการ',
+                    labelText: 'ชื่อเกมส์',
                   ),
                   autofocus: false,
-                  controller: titleController,
+                  controller: titleController1,
                   validator: (String? str) {
                     if (str!.isEmpty) {
                       return 'กรุณากรอกข้อมูล';
@@ -48,7 +52,31 @@ class _EditScreenState extends State<EditScreen> {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'จำนวนเงิน',
+                    labelText: 'แนวเกมส์',
+                  ),
+                  autofocus: false,
+                  controller: titleController2,
+                  validator: (String? str) {
+                    if (str!.isEmpty) {
+                      return 'กรุณากรอกข้อมูล';
+                    }
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'เนื้อเรื่องย่อของเกมส์',
+                  ),
+                  autofocus: false,
+                  controller: titleController3,
+                  validator: (String? str) {
+                    if (str!.isEmpty) {
+                      return 'กรุณากรอกข้อมูล';
+                    }
+                  },
+                ),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    labelText: 'Rating',
                   ),
                   keyboardType: TextInputType.number,
                   controller: amountController,
@@ -71,7 +99,7 @@ class _EditScreenState extends State<EditScreen> {
                               // create transaction data object
                               var statement = Transactions(
                                   keyID: widget.statement.keyID,
-                                  title: titleController.text,
+                                  title: titleController1.text,
                                   amount: double.parse(amountController.text),
                                   date: DateTime.now()
                                   );
