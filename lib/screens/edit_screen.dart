@@ -26,9 +26,9 @@ class _EditScreenState extends State<EditScreen> {
 
   @override
   Widget build(BuildContext context) {
-    titleController1.text = widget.statement.title;
-    titleController2.text = widget.statement.title;
-    titleController3.text = widget.statement.title;
+    titleController1.text = widget.statement.title1;
+    titleController2.text = widget.statement.title2;
+    titleController3.text = widget.statement.title3;
     amountController.text = widget.statement.amount.toString();
     return Scaffold(
         appBar: AppBar(
@@ -99,7 +99,9 @@ class _EditScreenState extends State<EditScreen> {
                               // create transaction data object
                               var statement = Transactions(
                                   keyID: widget.statement.keyID,
-                                  title: titleController1.text,
+                                  title1: titleController1.text,
+                                  title2: titleController2.text,
+                                  title3: titleController3.text,
                                   amount: double.parse(amountController.text),
                                   date: DateTime.now()
                                   );

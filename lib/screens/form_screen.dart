@@ -1,6 +1,5 @@
 import 'package:account/main.dart';
 import 'package:account/models/transactions.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:account/provider/transaction_provider.dart';
@@ -27,6 +26,8 @@ class _FormScreenState extends State<FormScreen> {
   
     return Scaffold(
         appBar: AppBar(
+        backgroundColor: const Color.fromARGB(51, 38, 0, 255),
+        
           title: const Text('แบบฟอร์มเพิ่มข้อมูล'),
         ),
         body: Form(
@@ -34,6 +35,7 @@ class _FormScreenState extends State<FormScreen> {
             child: Column(
               children: [
                 TextFormField(
+                  
                   decoration: const InputDecoration(
                     labelText: 'ชื่อเกมส์',
                   ),
@@ -97,22 +99,19 @@ class _FormScreenState extends State<FormScreen> {
                               // create transaction data object
                               var statement1 = Transactions(
                                   keyID: null,
-                                  title: titleController1.text,
+                                  title1: titleController1.text,
+                                  title2: titleController2.text,
+                                   title3: titleController3.text,
                                   amount: double.parse(amountController.text),
                                   date: DateTime.now()
                                   );
-                              var statement2 = Transactions(
-                                  keyID: null,
-                                  title: titleController1.text,
-                                  amount: double.parse(amountController.text),
-                                  date: DateTime.now()
-                                  );
+                              
                             
                               // add transaction data object to provider
                               var provider = Provider.of<TransactionProvider>(context, listen: false);
                               
                               provider.addTransaction(statement1);
-                              provider.addTransaction(statement2);
+                             
 
                               Navigator.push(context, MaterialPageRoute(
                                 fullscreenDialog: true,
