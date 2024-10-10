@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
         }),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Project',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(51, 255, 0, 0)),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(51, 47, 0, 255)),
           useMaterial3: true,
         ),
         home: const MyHomePage(),

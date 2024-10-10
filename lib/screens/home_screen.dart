@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.primary,
+          centerTitle: true,
           title: const Text("Game Recommendations"),
           actions: [
             IconButton(
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       subtitle: Text(DateFormat('dd MMM yyyy hh:mm:ss')
                           .format(statement.date)),
                       leading: CircleAvatar(
-                        radius: 30,
+                        radius: 40,
                         child: FittedBox(
                           child: Text('${statement.amount}'),
                         ),

@@ -26,8 +26,8 @@ class _FormScreenState extends State<FormScreen> {
   
     return Scaffold(
         appBar: AppBar(
-        backgroundColor: const Color.fromARGB(51, 38, 0, 255),
-        
+        backgroundColor: const Color.fromARGB(51, 47, 0, 255),
+        centerTitle: true,
           title: const Text('แบบฟอร์มเพิ่มข้อมูล'),
         ),
         body: Form(
@@ -91,8 +91,10 @@ class _FormScreenState extends State<FormScreen> {
                     }
                   },
                 ),
-                TextButton(
-                    child: const Text('บันทึก'),
+                FilledButton(
+                  style:
+                        FilledButton.styleFrom(backgroundColor: Colors.green),
+                    child: const Text('บันทึก',style: TextStyle(fontSize: 20),),
                     onPressed: () {
                           if (formKey.currentState!.validate())
                             {
@@ -101,7 +103,7 @@ class _FormScreenState extends State<FormScreen> {
                                   keyID: null,
                                   title1: titleController1.text,
                                   title2: titleController2.text,
-                                   title3: titleController3.text,
+                                  title3: titleController3.text,
                                   amount: double.parse(amountController.text),
                                   date: DateTime.now()
                                   );

@@ -32,6 +32,7 @@ class _EditScreenState extends State<EditScreen> {
     amountController.text = widget.statement.amount.toString();
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(51, 47, 0, 255),
           title: const Text('แบบฟอร์มแก้ไขข้อมูล'),
         ),
         body: Form(
@@ -91,8 +92,10 @@ class _EditScreenState extends State<EditScreen> {
                     }
                   },
                 ),
-                TextButton(
-                    child: const Text('แก้ไขข้อมูล'),
+                FilledButton(
+                  style:
+                        FilledButton.styleFrom(backgroundColor: Colors.green),
+                    child: const Text('แก้ไขข้อมูล',style: TextStyle(fontSize: 20),),
                     onPressed: () {
                           if (formKey.currentState!.validate())
                             {
