@@ -1,2 +1,2 @@
-Projectname Game-Recommendations \n
+Projectname Game-Recommendations
 forked from nattaponkum/account
