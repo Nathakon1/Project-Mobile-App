@@ -1,6 +1,5 @@
 import 'package:account/provider/transaction_provider.dart';
 import 'package:account/screens/edit_screen.dart';
-import 'package:account/screens/edit_screen.dart.bak';
 import 'package:account/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     margin:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
                     child: ListTile(
-                      title: Text(statement.title),
+                      title: Text(statement.title1),
                       subtitle: Text(DateFormat('dd MMM yyyy hh:mm:ss')
                           .format(statement.date)),
                       leading: CircleAvatar(
