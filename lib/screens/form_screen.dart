@@ -28,7 +28,13 @@ class _FormScreenState extends State<FormScreen> {
         appBar: AppBar(
         backgroundColor: const Color.fromARGB(51, 47, 0, 255),
         centerTitle: true,
-          title: const Text('แบบฟอร์มเพิ่มข้อมูล'),
+          title: const Text(
+            'เพิ่มข้อมูล',
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         body: Form(
             key: formKey,
@@ -94,7 +100,7 @@ class _FormScreenState extends State<FormScreen> {
                 FilledButton(
                   style:
                         FilledButton.styleFrom(backgroundColor: Colors.green),
-                    child: const Text('บันทึก',style: TextStyle(fontSize: 20),),
+                    child: const Text('SAVE',style: TextStyle(fontSize: 20),),
                     onPressed: () {
                           if (formKey.currentState!.validate())
                             {

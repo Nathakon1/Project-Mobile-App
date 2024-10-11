@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class EditScreen extends StatefulWidget {
-
   Transactions statement;
 
   EditScreen({super.key, required this.statement});
@@ -33,7 +32,14 @@ class _EditScreenState extends State<EditScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(51, 47, 0, 255),
-          title: const Text('แบบฟอร์มแก้ไขข้อมูล'),
+          centerTitle: true,
+          title: const Text(
+            'แก้ไขข้อมูล',
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         body: Form(
             key: formKey,
@@ -93,35 +99,38 @@ class _EditScreenState extends State<EditScreen> {
                   },
                 ),
                 FilledButton(
-                  style:
+                    style:
                         FilledButton.styleFrom(backgroundColor: Colors.green),
-                    child: const Text('แก้ไขข้อมูล',style: TextStyle(fontSize: 20),),
+                    child: const Text(
+                      'แก้ไขข้อมูล',
+                      style: TextStyle(fontSize: 20),
+                    ),
                     onPressed: () {
-                          if (formKey.currentState!.validate())
-                            {
-                              // create transaction data object
-                              var statement = Transactions(
-                                  keyID: widget.statement.keyID,
-                                  title1: titleController1.text,
-                                  title2: titleController2.text,
-                                  title3: titleController3.text,
-                                  amount: double.parse(amountController.text),
-                                  date: DateTime.now()
-                                  );
-                            
-                              // add transaction data object to provider
-                              var provider = Provider.of<TransactionProvider>(context, listen: false);
-                              
-                              provider.updateTransaction(statement);
+                      if (formKey.currentState!.validate()) {
+                        // create transaction data object
+                        var statement = Transactions(
+                            keyID: widget.statement.keyID,
+                            title1: titleController1.text,
+                            title2: titleController2.text,
+                            title3: titleController3.text,
+                            amount: double.parse(amountController.text),
+                            date: DateTime.now());
 
-                              Navigator.push(context, MaterialPageRoute(
+                        // add transaction data object to provider
+                        var provider = Provider.of<TransactionProvider>(context,
+                            listen: false);
+
+                        provider.updateTransaction(statement);
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
                                 fullscreenDialog: true,
-                                builder: (context){
+                                builder: (context) {
                                   return MyHomePage();
-                                }
-                              ));
-                            }
-                        })
+                                }));
+                      }
+                    })
               ],
             )));
   }
