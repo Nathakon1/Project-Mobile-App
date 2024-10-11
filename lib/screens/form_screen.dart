@@ -16,10 +16,10 @@ class FormScreen extends StatefulWidget {
 class _FormScreenState extends State<FormScreen> {
   final formKey = GlobalKey<FormState>();
 
-  final titleController1 = TextEditingController();
-  final titleController2 = TextEditingController();
-  final titleController3 = TextEditingController();
-  final amountController = TextEditingController();
+  final gamename = TextEditingController();
+  final genre = TextEditingController();
+  final review = TextEditingController();
+  final rating = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class _FormScreenState extends State<FormScreen> {
                     labelText: 'ชื่อเกมส์',
                   ),
                   autofocus: false,
-                  controller: titleController1,
+                  controller: gamename,
                   validator: (String? str) {
                     if (str!.isEmpty) {
                       return 'กรุณากรอกข้อมูล';
@@ -58,7 +58,7 @@ class _FormScreenState extends State<FormScreen> {
                     labelText: 'แนวเกมส์',
                   ),
                   autofocus: false,
-                  controller: titleController2,
+                  controller: genre,
                   validator: (String? str) {
                     if (str!.isEmpty) {
                       return 'กรุณากรอกข้อมูล';
@@ -67,10 +67,10 @@ class _FormScreenState extends State<FormScreen> {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(
-                    labelText: 'เนื้อเรื่องย่อของเกมส์',
+                    labelText: 'review',
                   ),
                   autofocus: false,
-                  controller: titleController3,
+                  controller: review,
                   validator: (String? str) {
                     if (str!.isEmpty) {
                       return 'กรุณากรอกข้อมูล';
@@ -82,7 +82,7 @@ class _FormScreenState extends State<FormScreen> {
                     labelText: 'Rating',
                   ),
                   keyboardType: TextInputType.number,
-                  controller: amountController,
+                  controller: rating,
                   validator: (String? input) {
                     try {
                       double amount = double.parse(input!);
@@ -107,10 +107,10 @@ class _FormScreenState extends State<FormScreen> {
                               // create transaction data object
                               var statement1 = Transactions(
                                   keyID: null,
-                                  title1: titleController1.text,
-                                  title2: titleController2.text,
-                                  title3: titleController3.text,
-                                  amount: double.parse(amountController.text),
+                                  title1: gamename.text,
+                                  title2: genre.text,
+                                  title3: review.text,
+                                  amount: double.parse(rating.text),
                                   date: DateTime.now()
                                   );
                               

@@ -3,7 +3,6 @@ import 'package:account/screens/edit_screen.dart';
 import 'package:account/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -54,13 +53,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                     child: ListTile(
                       title: Text(statement.title1),
-                      subtitle: Text('${provider.transactions[index].title2} | ${provider.transactions[index].title3}'),
+                      subtitle: Text('${provider.transactions[index].title2} | ${provider.transactions[index].title3} | ${provider.transactions[index].amount} '),
                       leading: const CircleAvatar(
                         radius: 40,
                         child: FittedBox(
                           child: Icon(Icons.gamepad),
                         ),
                       ),
+                      ch
                       trailing: IconButton(
                         icon: const Icon(Icons.delete),
                         onPressed: () {
