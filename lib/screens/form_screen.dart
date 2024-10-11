@@ -15,7 +15,6 @@ class FormScreen extends StatefulWidget {
 
 class _FormScreenState extends State<FormScreen> {
   final formKey = GlobalKey<FormState>();
-
   final gamename = TextEditingController();
   final genre = TextEditingController();
   final review = TextEditingController();
